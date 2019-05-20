@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="XCountryTimer.Views.ItemsPage" Title="{Binding Title}" x:Name="BrowseItemsPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="AddItem_Clicked" />
+    </ContentPage.ToolbarItems>
+    <StackLayout Padding="5">
+        <Button FontSize="18" Text="Start" HorizontalOptions="CenterAndExpand" Clicked="Handle_Clicked"></Button>
+        <ListView x:Name="ItemsListView" ItemsSource="{Binding Items}" 
+                  VerticalOptions="FillAndExpand" 
+                  HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" 
+                  IsPullToRefreshEnabled="true" IsRefreshing="{Binding IsBusy, Mode=OneWay}" 
+                  CachingStrategy="RecycleElement" ItemSelected="OnItemSelected" RowHeight="60">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical">
+                            <StackLayout Padding="0" Orientation="Horizontal">
+                                <Label Text="" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="13" 
+                                       VerticalOptions="EndAndExpand" FontAttributes="Bold" WidthRequest="135" HeightRequest="20" HorizontalTextAlignment="Center"/>
+                                <Label Text="Split 1" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="13" 
+                                       VerticalOptions="EndAndExpand" WidthRequest="70" HeightRequest="20" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                                <Label Text="Split 2" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="13" 
+                                       VerticalOptions="EndAndExpand" WidthRequest="70" HeightRequest="20" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                                <Label Text="Finish" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="13" 
+                                       VerticalOptions="EndAndExpand" WidthRequest="70" HeightRequest="20" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                            <StackLayout Padding="0" Orientation="Horizontal">
+                                <Label Text="{Binding Name}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" 
+                                       VerticalOptions="Center" FontAttributes="Bold" WidthRequest="135" />
+                                <Button Text="{Binding Split1}"  Style="{DynamicResource ListItemDetailTextStyle}" 
+                                        FontSize="13" WidthRequest="70" x:Name="{Binding Name}" AutomationId="{Binding Id}" 
+                                        HorizontalOptions="Start" Clicked="Handle_Time_Entered" />
+                                <Button Text="{Binding Split2}"  Style="{DynamicResource ListItemDetailTextStyle}" 
+                                        FontSize="13" WidthRequest="70" x:Name="{Binding Name}" 
+                                        HorizontalOptions="Start" Clicked="Handle_Time_Entered" AutomationId="{Binding Id}"/>
+                                <Button Text="{Binding Finish}"  Style="{DynamicResource ListItemDetailTextStyle}" 
+                                        FontSize="13" WidthRequest="70" x:Name="{Binding Name}" 
+                                        HorizontalOptions="Start" Clicked="Handle_Time_Entered" AutomationId="{Binding Id}"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,49 @@
+﻿<Properties StartupConfiguration="{837A6663-7AD3-4878-86AD-3B36F7C15636}|Default">
+  <MonoDevelop.Ide.ItemProperties.XCountryTimer.Android PreferredExecutionTarget="Android.Android_Accelerated_Oreo" />
+  <MonoDevelop.Ide.ItemProperties.XCountryTimer.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.9DD6A502-F867-4990-9BD5-CFA5E43F689E" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="XCountryTimer.iOS/Main.cs">
+    <Files>
+      <File FileName="XCountryTimer/Services/MockDataStore.cs" Line="32" Column="58" />
+      <File FileName="XCountryTimer/Views/ItemsPage.xaml" />
+      <File FileName="XCountryTimer/Views/ItemsPage.xaml.cs" Line="62" Column="1" />
+      <File FileName="XCountryTimer/ViewModels/ItemsViewModel.cs" Line="67" Column="14" />
+      <File FileName="XCountryTimer/ViewModels/BaseViewModel.cs" Line="46" Column="86" />
+      <File FileName="XCountryTimer/Models/Runner.cs" Line="33" Column="14" />
+      <File FileName="XCountryTimer/Services/RunnerService.cs" Line="63" Column="1" />
+      <File FileName="XCountryTimer/Constants.cs" Line="9" Column="1" />
+      <File FileName="XCountryTimer.iOS/Main.cs" Line="14" Column="10" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="XCountryTimer" expanded="True">
+            <Node name="XCountryTimer" expanded="True">
+              <Node name="Models" expanded="True" />
+              <Node name="Services" expanded="True" />
+              <Node name="ViewModels" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="ItemsPage.xaml" expanded="True" />
+                <Node name="MainPage.xaml" expanded="True" />
+                <Node name="RacePage.xaml" expanded="True" />
+              </Node>
+              <Node name="App.xaml" expanded="True" />
+            </Node>
+            <Node name="XCountryTimer.Android" expanded="True" />
+            <Node name="XCountryTimer.iOS" expanded="True">
+              <Node name="Main.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/smstilso/Projects/XCountryTimer/XCountryTimer/Views/ItemsPage.xaml.cs" relfile="XCountryTimer/Views/ItemsPage.xaml.cs" line="62" column="1" />
+      <Breakpoint file="/Users/smstilso/Projects/XCountryTimer/XCountryTimer/Services/RunnerService.cs" relfile="XCountryTimer/Services/RunnerService.cs" line="55" column="9" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
