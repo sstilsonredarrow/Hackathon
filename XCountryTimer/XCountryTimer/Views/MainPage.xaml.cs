@@ -1,17 +1,20 @@
-﻿using XCountryTimer.Models;
+﻿using XCountryCore.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using MvvmCross.Forms.Views;
+using MvvmCross.Forms.Presenters.Attributes;
 
 namespace XCountryTimer.Views
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(true)]
-    public partial class MainPage : MasterDetailPage
+    [MvxMasterDetailPagePresentation(MasterDetailPosition.Root, WrapInNavigationPage = false)]
+    public partial class MainPage : MvxMasterDetailPage
     {
         Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
         public MainPage()

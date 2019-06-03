@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+<views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+             xmlns:local="clr-namespace:Assignment4.Views"
              x:Class="XCountryTimer.Views.ItemsPage" Title="{Binding Title}" x:Name="BrowseItemsPage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="AddItem_Clicked" />
     </ContentPage.ToolbarItems>
     <StackLayout Padding="5">
-        <Button FontSize="18" Text="Start" HorizontalOptions="CenterAndExpand" Clicked="Handle_Clicked"></Button>
+        <Button FontSize="18" HorizontalOptions="CenterAndExpand" Clicked="Handle_Clicked" 
+                Text="{Binding StartText}" x:Name="StartButton"></Button>
         <ListView x:Name="ItemsListView" ItemsSource="{Binding Items}" 
                   VerticalOptions="FillAndExpand" 
                   HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" 
@@ -24,20 +27,21 @@
                                 <Label Text="Split 2" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="13" 
                                        VerticalOptions="EndAndExpand" WidthRequest="70" HeightRequest="20" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
                                 <Label Text="Finish" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="13" 
-                                       VerticalOptions="EndAndExpand" WidthRequest="70" HeightRequest="20" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                                       VerticalOptions="EndAndExpand" WidthRequest="70" HeightRequest="20" 
+                                       HorizontalOptions="Center" HorizontalTextAlignment="Center" />
                             </StackLayout>
                             <StackLayout Padding="0" Orientation="Horizontal">
                                 <Label Text="{Binding Name}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" 
-                                       VerticalOptions="Center" FontAttributes="Bold" WidthRequest="135" />
+                                       VerticalOptions="Center" FontAttributes="Bold" WidthRequest="135"/>
                                 <Button Text="{Binding Split1}"  Style="{DynamicResource ListItemDetailTextStyle}" 
                                         FontSize="13" WidthRequest="70" x:Name="{Binding Name}" AutomationId="{Binding Id}" 
-                                        HorizontalOptions="Start" Clicked="Handle_Time_Entered" />
+                                        HorizontalOptions="Start" Clicked="Handle_Time_Entered" IsEnabled="{Binding Enabled}" />
                                 <Button Text="{Binding Split2}"  Style="{DynamicResource ListItemDetailTextStyle}" 
                                         FontSize="13" WidthRequest="70" x:Name="{Binding Name}" 
-                                        HorizontalOptions="Start" Clicked="Handle_Time_Entered" AutomationId="{Binding Id}"/>
+                                        HorizontalOptions="Start" Clicked="Handle_Time_Entered" AutomationId="{Binding Id}" IsEnabled="{Binding Enabled}"/>
                                 <Button Text="{Binding Finish}"  Style="{DynamicResource ListItemDetailTextStyle}" 
                                         FontSize="13" WidthRequest="70" x:Name="{Binding Name}" 
-                                        HorizontalOptions="Start" Clicked="Handle_Time_Entered" AutomationId="{Binding Id}"/>
+                                        HorizontalOptions="Start" Clicked="Handle_Time_Entered" AutomationId="{Binding Id}" IsEnabled="{Binding Enabled}"/>
                             </StackLayout>
                         </StackLayout>
                     </ViewCell>
@@ -45,4 +49,4 @@
             </ListView.ItemTemplate>
         </ListView>
     </StackLayout>
-</ContentPage>
+</views:MvxContentPage>

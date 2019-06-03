@@ -141,12 +141,19 @@
     <PackageReference Include="Autofac">
       <Version>4.9.2</Version>
     </PackageReference>
+    <PackageReference Include="MvvmCross.Forms">
+      <Version>6.3.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\XCountryTimer\XCountryTimer.csproj">
       <Project>{F159F559-EAF5-4B00-8D02-2BB5810F1F6B}</Project>
       <Name>XCountryTimer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XCountryCore\XCountryCore.csproj">
+      <Project>{3E21774A-C460-4D04-80D7-369C156C5277}</Project>
+      <Name>XCountryCore</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

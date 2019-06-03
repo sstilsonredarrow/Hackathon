@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using XCountryTimer.Services;
+using XCountryCore.Services;
 using XCountryTimer.Views;
 using Autofac;
 
@@ -13,10 +13,10 @@ namespace XCountryTimer
         public App()
         {
             InitializeComponent();
-            var builder = new ContainerBuilder();
-            builder.RegisterType<RunnerService>().As<IRunnerService>();
-            DependencyService.Register<MockDataStore>();
-            MainPage = new MainPage();
+            //var builder = new ContainerBuilder();
+            //builder.RegisterType<RunnerService>().As<IRunnerService>();
+            //DependencyService.Register<MockDataStore>();
+            //MainPage = new MainPage();
         }
 
         protected override void OnStart()

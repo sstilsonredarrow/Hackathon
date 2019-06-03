@@ -1,5 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XCountryTimer.Views.MenuPage" Title="Menu">
+<?xml version="1.0" encoding="utf-8"?>
+<views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+             x:Class="XCountryTimer.Views.MenuPage" Title="Menu">
     <StackLayout VerticalOptions="FillAndExpand">
         <ListView x:Name="ListViewMenu" HasUnevenRows="True">
             <ListView.ItemTemplate>
@@ -13,4 +16,4 @@
             </ListView.ItemTemplate>
         </ListView>
     </StackLayout>
-</ContentPage>
+</views:MvxContentPage>

@@ -5,14 +5,15 @@ using System.Runtime.CompilerServices;
 
 using Xamarin.Forms;
 
-using XCountryTimer.Models;
-using XCountryTimer.Services;
+using XCountryCore.Models;
+using XCountryCore.Services;
+using XCountryCore.ViewModels;
 
 namespace XCountryTimer.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Runner> DataStore => DependencyService.Get<IDataStore<Runner>>() ?? new MockDataStore();
+        public IDataStore<Runner> DataStore = null;
 
         bool isBusy = false;
         public bool IsBusy

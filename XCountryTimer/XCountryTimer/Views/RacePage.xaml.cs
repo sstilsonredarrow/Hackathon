@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-using XCountryTimer.Models;
+using XCountryCore.Models;
 using XCountryTimer.Views;
-using XCountryTimer.ViewModels;
-using XCountryTimer.Services;
+using XCountryCore.ViewModels;
+using XCountryCore.Services;
 
 namespace XCountryTimer.Views
 {
@@ -21,25 +21,25 @@ namespace XCountryTimer.Views
     public partial class RacePage : ContentPage
     {
     
-        RaceViewModel viewModel;
+       // RaceViewModel viewModel;
 
         public RacePage()
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new RaceViewModel(new RunnerService());
+           // BindingContext = viewModel = new RaceViewModel(new RunnerService());
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as Item;
-            if (item == null)
-                return;
+            //var item = args.SelectedItem as Item;
+            //if (item == null)
+            //    return;
 
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+            //await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
 
-            // Manually deselect item.
-            RunnerListView.SelectedItem = null;
+            //// Manually deselect item.
+            //RunnerListView.SelectedItem = null;
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)
@@ -51,8 +51,8 @@ namespace XCountryTimer.Views
         {
             base.OnAppearing();
 
-            if (viewModel.Runners == null || viewModel.Runners.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
+          //  if (viewModel.Runners == null || viewModel.Runners.Count == 0)
+             //   viewModel.LoadItemsCommand.Execute(null);
         }
     }
 }

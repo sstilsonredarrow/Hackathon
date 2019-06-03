@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:XCountryTimer.Views" x:Class="XCountryTimer.Views.MainPage">
+<views:MvxMasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms" 
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                  xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                  xmlns:local="clr-namespace:XCountryTimer.Views"
+                  x:Class="XCountryTimer.Views.MainPage" >
     <MasterDetailPage.Master>
-        <views:MenuPage />
+        <local:MenuPage />
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
         <NavigationPage>
@@ -11,8 +15,8 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:ItemsPage />
+                <local:ItemsPage BindingContext="{Binding ItemsViewModel}" />
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>
-</MasterDetailPage>
+</views:MvxMasterDetailPage>

@@ -8,40 +8,30 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-using XCountryTimer.Models;
+using XCountryCore.Models;
 using XCountryTimer.Views;
-using XCountryTimer.ViewModels;
+using XCountryCore.ViewModels;
 using System.Windows.Input;
-using XCountryTimer.Services;
+using XCountryCore.Services;
 
 namespace XCountryTimer.Views
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(true)]
-    public partial class ItemsPage : ContentPage
+    public partial class ItemsPage
     {
-        ItemsViewModel viewModel;
         public DateTime StartTime { get; set; }
-
+        public ItemsViewModel viewModel;
 
         public ItemsPage()
         {
             InitializeComponent();
-
-            BindingContext = viewModel = new ItemsViewModel(new RunnerService());
         }
 
-        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as Item;
-            if (item == null)
-                return;
-
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
-
-            // Manually deselect item.
-            ItemsListView.SelectedItem = null;
+           // ItemsListView.SelectedItem = null;
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)
@@ -49,24 +39,26 @@ namespace XCountryTimer.Views
             await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            if (viewModel.Items.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
-        }
 
         async void Handle_Time_Entered(object sender, System.EventArgs e)
         {
+            if (!viewModel.RaceStarted)
+                return;
+
             Button b = sender as Button;
 
             var id = b.AutomationId;
-            var runner = viewModel.Items.Where(r => r.Id == id).FirstOrDefault();
+            var runner = viewModel.Items.FirstOrDefault(r => r.Id == id);
             int theOne = runner.UpdateTime(DateTime.Now.Subtract(StartTime));
             HandleButtonEnablement(b, theOne);
             await viewModel.UpdateTime(runner, 0);
 
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            viewModel = this.BindingContext.DataContext as ItemsViewModel;
         }
 
         private bool HandleButtonEnablement(Button button, int theOne)
@@ -98,25 +90,34 @@ namespace XCountryTimer.Views
         void Handle_Clicked(object sender, System.EventArgs e)
         {
             StartTime = DateTime.Now;
+            viewModel.RaceStarted = !viewModel.RaceStarted;
 
-            Device.StartTimer(TimeSpan.FromSeconds(5), () =>
+            StartButton.Text = viewModel.RaceStarted ? "Stop" : "Start";
+
+            viewModel.Reset(viewModel.RaceStarted);
+
+            if ( viewModel.RaceStarted)
             {
-                viewModel.ElapsedTime = DateTime.Now.Subtract(StartTime);
-
-                foreach (string s in viewModel.AutomationIds)
+                Device.StartTimer(TimeSpan.FromSeconds(5), () =>
                 {
+                    viewModel.ElapsedTime = DateTime.Now.Subtract(StartTime);
 
-                }
+                    foreach (string s in viewModel.AutomationIds)
+                    {
 
-                Device.BeginInvokeOnMainThread(() => viewModel.UpdateTimes());
+                    }
 
-                //foreach(Runner r in viewModel.Items)
-                //{
-                //    var obj = this.ItemsListView.FindByName(r.Name) as Button;
-                //    obj.Text = viewModel.ElapsedTime.ToString("c");
-                //}
-                return true; // True = Repeat again, False = Stop the timer
-            });
+                    Device.BeginInvokeOnMainThread(() => viewModel.UpdateTimes());
+
+                    //foreach(Runner r in viewModel.Items)
+                    //{
+                    //    var obj = this.ItemsListView.FindByName(r.Name) as Button;
+                    //    obj.Text = viewModel.ElapsedTime.ToString("c");
+                    //}
+                    return viewModel.RaceStarted; // True = Repeat again, False = Stop the timer
+                });
+            }
+
         }
     }
 }
