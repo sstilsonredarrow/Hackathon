@@ -57,7 +57,7 @@ namespace XCountryCore.ViewModels
 
         public async Task UpdateTime(RunnerViewModel runner, int whichTime)
         {
-            await _runnerService.SaveTimeAsync(runner);
+            await _runnerService.SaveTimeAsync(runner, whichTime);
         }
 
         public override async Task Initialize()
@@ -106,7 +106,9 @@ namespace XCountryCore.ViewModels
                 else
                     Items = new ObservableCollection<RunnerViewModel>();
 
-                var items = await DataStore.GetItemsAsync(true);
+              // var items = await DataStore.GetItemsAsync(true);
+                var items = await _runnerService.GetRunnersForReal();
+
                 foreach (var item in items)
                 {
                     Items.Add(new RunnerViewModel

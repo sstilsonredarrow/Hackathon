@@ -11,6 +11,7 @@ namespace XCountryCore.Services
     {
         Task<List<RunnerViewModel>> GetRunners();
         Task<List<RunnerViewModel>> GetRunnerFauxData();
-        Task SaveTimeAsync(RunnerViewModel item);
+        Task SaveTimeAsync(RunnerViewModel item, int time);
+        Task<ObservableCollection<RunnerViewModel>> GetRunnersForReal();
     }
 }

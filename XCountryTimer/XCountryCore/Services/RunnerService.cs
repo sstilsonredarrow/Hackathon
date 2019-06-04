@@ -50,10 +50,56 @@ namespace XCountryCore.Services
             return await Task.FromResult(runners);
         }
 
-        public async Task SaveTimeAsync(RunnerViewModel item)
+        public async Task<ObservableCollection<RunnerViewModel>>GetRunnersForReal()
         {
+            string queryString = //"?meet=Pittsville&race=VarsityBoys&runner=Garrett&split=mile2&time=4:54:260";
+            "https://w8mphkeb7d.execute-api.us-east-1.amazonaws.com/default/jjd-crosscountry-runners-hackathon?group=varsity&gender=male";
 
-            string queryString = "?meet=Pittsville&race=VarsityBoys&runner=Garrett&split=mile2&time=4:54:260";
+            var uri = new Uri(queryString);
+
+            var content = new StringContent(string.Empty, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = null;
+
+            string s = await _client.GetStringAsync(uri);
+
+            ObservableCollection<RunnerViewModel> runners = new ObservableCollection<RunnerViewModel>();
+
+            runners = JsonConvert.DeserializeObject<ObservableCollection<RunnerViewModel>>(s);
+            foreach(RunnerViewModel rvm in runners)
+            {
+                rvm.Split1 = "0:00:00";
+                rvm.Split2 = "0:00:00";
+                rvm.Finish = "0:00:00";
+                rvm.Enabled = false;
+            };
+
+            return runners;
+
+        }
+
+        public async Task SaveTimeAsync(RunnerViewModel item, int time)
+        {
+            string whichTime = string.Empty;
+            string theTime = string.Empty;
+
+            switch(time)
+            {
+                case 0: whichTime = "mile1";
+                    theTime = item.Split1;
+                    break;
+                case 1: whichTime = "mile2";
+                    theTime = item.Split2;
+                    break;
+                case 2: whichTime = "finish";
+                    theTime = item.Finish;
+                    break;
+                default: whichTime = "mile1";
+                    theTime = item.Split1;
+                    break;
+            }
+
+            string queryString = $"?meet=Pittsville&race=VarsityBoys&runner={item.Name}&split={whichTime}&time={theTime}";
             var uri = new Uri($"{Constants.BASE_URL}/{queryString}");
 
             var json = JsonConvert.SerializeObject(item);

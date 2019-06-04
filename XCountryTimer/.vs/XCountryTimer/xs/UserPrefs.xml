@@ -1,16 +1,20 @@
 ﻿<Properties StartupConfiguration="{837A6663-7AD3-4878-86AD-3B36F7C15636}|Default">
   <MonoDevelop.Ide.ItemProperties.XCountryTimer.Android PreferredExecutionTarget="Android.Android_Accelerated_Oreo" />
   <MonoDevelop.Ide.ItemProperties.XCountryTimer.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.9DD6A502-F867-4990-9BD5-CFA5E43F689E" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="XCountryTimer/Views/ItemsPage.xaml.cs">
+    <Files>
+      <File FileName="XCountryTimer.Android/RootActivity.cs" Line="18" Column="6" />
+      <File FileName="XCountryCore/Services/MockDataStore.cs" Line="59" Column="70" />
+      <File FileName="XCountryCore/Services/RunnerService.cs" Line="60" Column="94" />
+      <File FileName="XCountryCore/Services/IRunnerService.cs" Line="12" Column="50" />
+      <File FileName="XCountryCore/ViewModels/ItemsViewModel.cs" Line="67" Column="55" />
+      <File FileName="XCountryTimer/Views/ItemsPage.xaml.cs" Line="52" Column="78" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="XCountryTimer" expanded="True">
             <Node name="XCountryCore" expanded="True">
-              <Node name="Dependencies" expanded="True">
-                <Node name="PackageDependencies" expanded="True" />
-              </Node>
-              <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True" />
               <Node name="ViewModels" expanded="True" />
             </Node>
@@ -23,10 +27,10 @@
               <Node name="Views" expanded="True">
                 <Node name="AboutPage.xaml" expanded="True" />
                 <Node name="ItemDetailPage.xaml" expanded="True" />
-                <Node name="ItemsPage.xaml" expanded="True" />
-                <Node name="MainPage.xaml" expanded="True">
-                  <Node name="MainPage.xaml.cs" selected="True" />
+                <Node name="ItemsPage.xaml" expanded="True">
+                  <Node name="ItemsPage.xaml.cs" selected="True" />
                 </Node>
+                <Node name="MainPage.xaml" expanded="True" />
                 <Node name="MenuPage.xaml" expanded="True" />
                 <Node name="RacePage.xaml" expanded="True" />
               </Node>
